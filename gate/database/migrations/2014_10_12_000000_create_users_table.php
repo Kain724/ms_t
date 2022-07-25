@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-             $table->id();
+            $table->id();
             $table->timestamps();
 
             $table->string('userRole')->default('employee');
@@ -22,9 +22,16 @@ class CreateUsersTable extends Migration
             $table->string('surname')->nullable();
 
             $table->string('workEmail')->unique();
+            $table->string('personalEmail')->nullable();
+
             $table->string('dateBirth')->nullable();
             $table->string('personalPhoneNumber')->nullable();
+            $table->string('workPhoneNumber')->nullable();
+
             $table->string('actualRegAddress')->nullable();
+            $table->string('regAddress')->nullable();
+
+            $table->string('file')->nullable();
             $table->string('iDNumber')->unique()->nullable();
             $table->string('passportNumber')->unique()->nullable();
             $table->string('DocIssueDate')->nullable();
@@ -32,11 +39,6 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->string('citizenship')->nullable();
             $table->string('marital')->nullable();
-            $table->string('workPhoneNumber')->nullable();
-            $table->string('personalEmail')->nullable();
-            $table->string('regAddress')->nullable();
-            $table->string('file')->nullable();
-
 
             $table->string('password');
 
@@ -47,24 +49,7 @@ class CreateUsersTable extends Migration
         });
     }
 
-// // userRole: role,
-//     name: '',
-//     surname: '',
-//     dateBirth: '',
-//     personalPhoneNumber: '',
-//     actualRegAddress: '',
-//     iDNumber: '',
-//     passportNumber: '',
-//     DocIssueDate: '',
-//     expirDate: '',
-//     gender: '',
-//     citizenship: '',
-//     marital: '',
-//     file: '',
-//     workPhoneNumber: '',
-//     personalEmail: '',
-//     workEmail: '',
-//     regAddress: ''
+
 
     /**
      * Reverse the migrations.
