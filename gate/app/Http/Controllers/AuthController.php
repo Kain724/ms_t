@@ -15,14 +15,14 @@ class AuthController extends Controller
        public function register(Request $request) {
         $fields = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'workEmail' => 'required',
             'password' => 'required'
         ]);
 
         $user = User::create([
             'name' => $fields['name'],
-            'email' => $fields['email'],
-            'password' => bcrypt($fields['password'])
+            'workEmail' => $fields['workEmail'],
+            'password' => bcrypt($fields['password']),
         ]);
 
         $token = $user->createToken('myapptoken')->plainTextToken;
@@ -37,12 +37,12 @@ class AuthController extends Controller
 
     public function login(Request $request) {
         $fields = $request->validate([
-            'email' => 'required',
+            'workEmail' => 'required',
             'password' => 'required'
         ]);
 
-        // Check email
-        $user = User::where('email', $fields['email'])->first();
+        // Check workEmail
+        $user = User::where('workEmail', $fields['workEmail'])->first();
 
         // Check password
         if(!$user || !Hash::check($fields['password'], $user->password)) {
