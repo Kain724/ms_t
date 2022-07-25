@@ -24,9 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('workEmail')->unique();
             $table->string('personalEmail')->nullable();
 
-            $table->string('dateBirth')->nullable();
-            $table->string('personalPhoneNumber')->nullable();
-            $table->string('workPhoneNumber')->nullable();
+            $table->integer('dateBirth')->unsigned()->nullable();
+            $table->integer('personalPhoneNumber')->unsigned()->nullable();
+            $table->integer('workPhoneNumber')->unsigned()->nullable();
 
             $table->string('actualRegAddress')->nullable();
             $table->string('regAddress')->nullable();
@@ -34,8 +34,8 @@ class CreateUsersTable extends Migration
             $table->string('file')->nullable();
             $table->string('iDNumber')->unique()->nullable();
             $table->string('passportNumber')->unique()->nullable();
-            $table->string('DocIssueDate')->nullable();
-            $table->string('expirDate')->nullable();
+            $table->integer('DocIssueDate')->unsigned()->nullable();
+            $table->integer('expirDate')->unsigned()->nullable();
             $table->string('gender')->nullable();
             $table->string('citizenship')->nullable();
             $table->string('marital')->nullable();
@@ -43,7 +43,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
 
 
         });
